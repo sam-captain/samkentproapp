@@ -2,6 +2,7 @@ package com.samkent.proapp.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.samkent.proapp.JobDetailsActivity;
@@ -80,9 +82,13 @@ public class JobAdapter  extends RecyclerView.Adapter<JobAdapter.ViewHolder> {
             details.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(context, JobDetailsActivity.class);
-                    intent.putExtra("ID", id);
-                    context.startActivity(intent);
+//                    Intent intent = new Intent(context, JobDetailsActivity.class);
+//                    intent.putExtra("ID", id);
+//                    context.startActivity(intent);
+                    Bundle bundle = new Bundle();
+                    bundle.putLong("ID", id);
+
+                    Navigation.findNavController(v).navigate(R.id.action_jobDetails, bundle);
 
 
                 }
