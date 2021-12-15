@@ -3,6 +3,7 @@ package com.samkent.proapp;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,10 +12,13 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.samkent.proapp.models.Jobs;
+import com.samkent.proapp.ui.home.HomeViewModel;
 import com.samkent.proapp.utilities.ObjectBox;
 
 
 public class JobDetailsFragment extends Fragment {
+
+    HomeViewModel homeViewModel;
 
     public JobDetailsFragment() {
         // Required empty public constructor
@@ -25,13 +29,16 @@ public class JobDetailsFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
         
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+//         Inflate the layout for this fragment
+        homeViewModel = new ViewModelProvider(requireActivity()).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_job_details, container, false);
         description = root.findViewById(R.id.txt_description);
         requirement = root.findViewById(R.id.txt_requirement);
@@ -50,17 +57,23 @@ public class JobDetailsFragment extends Fragment {
         super.onResume();
         getArguments().getLong("ID");
 
-        if (getArguments().containsKey("ID")){
-            Jobs ourJob = ObjectBox.get().boxFor(Jobs.class).get(getArguments().getLong("ID", 0));
-            description.setText(ourJob.getDescription());
-            requirement.setText(ourJob.getRequirements());
-            salary.setText(ourJob.getSalary());
-            mode.setText("Full Time");
-            location.setText(ourJob.getLocation());
-            applyBefore.setText(ourJob.getExpiry_date());
-
-
-        }
+//        if (getArguments().containsKey("ID")){
+//  }
+        homeViewModel.getSelected().observe(requireActivity(),id ->{
+            displayData(id);
+        });
 
     }
+    public void displayData(long id){
+
+        Jobs ourJob = ObjectBox.get().boxFor(Jobs.class).get(id);
+        description.setText(ourJob.getDescription());
+        requirement.setText(ourJob.getRequirements());
+        salary.setText(ourJob.getSalary());
+        mode.setText("Full Time");
+        location.setText(ourJob.getLocation());
+        applyBefore.setText(ourJob.getExpiry_date());
+
+    }
+
 }

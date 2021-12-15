@@ -41,7 +41,7 @@ int count = 0;
         @Override
         public void onClick(View v) {
 
-            Intent goToAuth  = new Intent(MainActivity.this,AuthenticationActivity.class);
+            Intent goToAuth  = new Intent(MainActivity.this,JobFormActivity.class);
 
 
             startActivity(goToAuth);

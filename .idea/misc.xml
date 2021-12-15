@@ -25,8 +25,12 @@
         <entry key="..\:/Users/USER.DESKTOP-1HVVOCB/AndroidStudioProjects/ProApp/app/src/main/res/menu/cardview3.xml" value="0.13402061855670103" />
         <entry key="..\:/Users/USER.DESKTOP-1HVVOCB/AndroidStudioProjects/ProApp/app/src/main/res/menu/menu_job_details.xml" value="0.13402061855670103" />
         <entry key="..\:/Users/USER.DESKTOP-1HVVOCB/AndroidStudioProjects/ProApp/app/src/main/res/menu/menu_main.xml" value="0.13541666666666666" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/androidproapp/app/src/main/res/drawable/dashed.xml" value="0.2890625" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/androidproapp/app/src/main/res/drawable/hello.xml" value="0.2890625" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/androidproapp/app/src/main/res/drawable/ic_account_circle_24.xml" value="0.2890625" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/androidproapp/app/src/main/res/layout-w1240dp/content_scrolling.xml" value="0.241015625" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/androidproapp/app/src/main/res/layout-w936dp/content_scrolling.xml" value="0.2046875" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/androidproapp/app/src/main/res/layout/activity_authentication.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/androidproapp/app/src/main/res/layout/activity_explore.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/androidproapp/app/src/main/res/layout/activity_home.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/androidproapp/app/src/main/res/layout/activity_job_details.xml" value="0.27291666666666664" />
@@ -35,6 +39,7 @@
         <entry key="..\:/Users/hp/AndroidStudioProjects/androidproapp/app/src/main/res/layout/activity_pro_details.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/androidproapp/app/src/main/res/layout/activity_scrolling.xml" value="0.14270833333333333" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/androidproapp/app/src/main/res/layout/content_scrolling.xml" value="0.33" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/androidproapp/app/src/main/res/layout/fragment_account.xml" value="0.14270833333333333" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/androidproapp/app/src/main/res/layout/fragment_dashboard.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/androidproapp/app/src/main/res/layout/fragment_home.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/androidproapp/app/src/main/res/layout/fragment_job_details.xml" value="0.27291666666666664" />

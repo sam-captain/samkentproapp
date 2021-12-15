@@ -18,8 +18,10 @@ import com.samkent.proapp.R;
 import com.samkent.proapp.adapters.ProfessionAdapter;
 import com.samkent.proapp.adapters.ProfessionalAdapter;
 import com.samkent.proapp.databinding.FragmentDashboardBinding;
+import com.samkent.proapp.databinding.FragmentHomeBinding;
 import com.samkent.proapp.models.Profession;
 import com.samkent.proapp.models.Professional;
+import com.samkent.proapp.ui.home.HomeViewModel;
 import com.samkent.proapp.utilities.ObjectBox;
 import com.samkent.proapp.utilities.PreferenceStorage;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
@@ -32,7 +34,7 @@ import io.objectbox.Box;
 
 public class DashboardFragment extends Fragment {
 
-    private DashboardViewModel dashboardViewModel;
+    private HomeViewModel homeViewModel;
     private FragmentDashboardBinding binding;
     
     List<Professional> professionals = new ArrayList<>();
@@ -48,10 +50,10 @@ public class DashboardFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        dashboardViewModel =
-                new ViewModelProvider(getActivity()).get(DashboardViewModel.class);
+        homeViewModel =
+                new ViewModelProvider(getActivity()).get(HomeViewModel.class);
 
-        binding = FragmentDashboardBinding.inflate(inflater, container, false);
+        binding = binding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         preferenceStorage = new PreferenceStorage(getActivity());
@@ -62,7 +64,7 @@ public class DashboardFragment extends Fragment {
         professionsRecyclerview.setLayoutManager(new GridLayoutManager(getActivity(),2));
 
         professionsRecyclerview.setNestedScrollingEnabled(true);
-        professions.addAll(professionBox.getAll());
+
 
 
         professionAdapter = new ProfessionAdapter(getActivity(),professions);
@@ -122,7 +124,18 @@ public class DashboardFragment extends Fragment {
         profession.setId(id);
         professions.add(profession);
     }
-    
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        homeViewModel.getProfessions().observe(requireActivity(), professions_variable ->{
+            professions.clear();
+            professions.addAll(professions_variable);
+            professionAdapter.notifyDataSetChanged();
+        });
+
+    }
 
     @Override
     public void onDestroyView() {

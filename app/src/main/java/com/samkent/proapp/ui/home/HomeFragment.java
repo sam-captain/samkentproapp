@@ -36,17 +36,27 @@ public class HomeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         homeViewModel =
-                new ViewModelProvider(this).get(HomeViewModel.class);
+                new ViewModelProvider(requireActivity()).get(HomeViewModel.class);
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         jobRecyclerView = root.findViewById(R.id.jobsRecyclerView);
         jobRecyclerView.setLayoutManager(new LinearLayoutManager(root.getContext()));
         jobRecyclerView.setNestedScrollingEnabled(true);
-        jobs.addAll(jobsBox.getAll());
-        jobAdapter = new JobAdapter(getActivity(), jobs);
+        jobAdapter = new JobAdapter(getActivity(), jobs, homeViewModel);
         jobRecyclerView.setAdapter(jobAdapter);
         return root;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        homeViewModel.getJobs().observe(requireActivity(), jobs_variable->{
+            jobs.clear();
+            jobs.addAll(jobs_variable);
+            jobAdapter.notifyDataSetChanged();
+        });
     }
 
     @Override

@@ -15,7 +15,6 @@ import androidx.lifecycle.ViewModelProvider;
 import com.samkent.proapp.databinding.FragmentNotificationsBinding;
 
 public class NotificationsFragment extends Fragment {
-
     private NotificationsViewModel notificationsViewModel;
     private FragmentNotificationsBinding binding;
 

@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,6 +18,7 @@ import com.samkent.proapp.JobDetailsActivity;
 import com.samkent.proapp.R;
 import com.samkent.proapp.models.Jobs;
 import com.samkent.proapp.models.Profession;
+import com.samkent.proapp.ui.home.HomeViewModel;
 import com.samkent.proapp.utilities.ObjectBox;
 import com.google.android.material.chip.Chip;
 
@@ -29,11 +31,13 @@ public class JobAdapter  extends RecyclerView.Adapter<JobAdapter.ViewHolder> {
     Context context;
     List<Jobs> jobs;
     Box<Profession> professionBox= ObjectBox.get().boxFor(Profession.class);
+    HomeViewModel homeViewModel;
 
 
-    public JobAdapter(Context context, List<Jobs> jobs) {
+    public JobAdapter(Context context, List<Jobs> jobs, HomeViewModel homeViewModel) {
         this.context = context;
         this.jobs = jobs;
+        this.homeViewModel = homeViewModel;
 
     }
     @NonNull
@@ -85,6 +89,7 @@ public class JobAdapter  extends RecyclerView.Adapter<JobAdapter.ViewHolder> {
 //                    Intent intent = new Intent(context, JobDetailsActivity.class);
 //                    intent.putExtra("ID", id);
 //                    context.startActivity(intent);
+                    homeViewModel.setSelected(id);
                     Bundle bundle = new Bundle();
                     bundle.putLong("ID", id);
 
